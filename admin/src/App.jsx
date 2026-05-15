@@ -9,7 +9,7 @@ import Login from './components/Login'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-export const backendUrl = "https://forever-backend-five-flame.vercel.app"
+export const backendUrl = "http://localhost:4000"
 
 export const currency = '$'
 
