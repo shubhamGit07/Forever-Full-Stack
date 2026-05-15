@@ -6,7 +6,7 @@ import {
     getUserCart,
     updateCart
 } from '../controllers/cartController.js'
-import authUser from '../middleware/Auth.js'
+import authUser from '../middleware/auth.js'
 
 const cartRouter = express.Router()
 
