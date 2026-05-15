@@ -12,6 +12,7 @@ import orderRouter from './routes/orderRoute.js'
 
 // app config
 const app = express()
+const PORT = process.env.PORT || 4000
 
 // connect db
 connectDB()
@@ -32,5 +33,7 @@ app.get('/', (req, res) => {
     res.send('API Working')
 })
 
-// export app for vercel
-export default app
+// start server
+app.listen(PORT, () => {
+    console.log(`Server running on PORT: ${PORT}`)
+})
