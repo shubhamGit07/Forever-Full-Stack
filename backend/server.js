@@ -21,7 +21,10 @@ connectCloudinary()
 // middlewares
 app.use(express.json())
 app.use(cors({
-    origin: "https://forever-frontend-ruby-kappa.vercel.app",
+    origin: [
+        "https://forever-frontend-ruby-kappa.vercel.app",
+        "https://forever-admin-five-orpin.vercel.app"
+    ],
     credentials: true
 }))
 // api endpoints
