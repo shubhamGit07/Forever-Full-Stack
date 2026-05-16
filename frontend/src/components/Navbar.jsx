@@ -90,13 +90,11 @@ const Navbar = () => {
 
         {/* ADMIN PANEL BUTTON */}
 
-        {/* ADMIN PANEL BUTTON */}
-
         <a
-          href='https://forever-admin-five-orpin.vercel.app'
-          target='_blank'
-          rel='noreferrer'
-          className='px-5 py-2 rounded-full border border-gray-200 text-sm text-gray-700 hover:text-black hover:border-gray-300 transition-all duration-300 outline-none focus:outline-none focus:ring-0'
+          href="https://forever-admin-five-orpin.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className='px-5 py-2 rounded-full border border-gray-200 text-sm text-gray-700 hover:text-black hover:border-gray-300 transition-all duration-300'
         >
           Admin Panel
         </a>
@@ -330,7 +328,7 @@ const Navbar = () => {
 
           <a
 
-           href='https://forever-admin-five-orpin.vercel.app'
+            href='https://forever-admin-five-orpin.vercel.app'
 
             target='_blank'
 
