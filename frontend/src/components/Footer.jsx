@@ -15,47 +15,47 @@ const Footer = () => {
           />
 
           <p className='w-full md:w-2/3 text-gray-600'>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-</p>
+            Forever is a modern fashion eCommerce platform offering stylish, affordable, and high-quality clothing for every generation.
+            We focus on providing seamless shopping experiences with secure payments, fast delivery, and premium customer support.
+          </p>
         </div>
 
         <div>
 
-  <p className='text-xl font-medium mb-5'>
-    COMPANY
-  </p>
+          <p className='text-xl font-medium mb-5'>
+            COMPANY
+          </p>
 
-  <ul className='flex flex-col gap-1 text-gray-600'>
-    <li>Home</li>
-    <li>About us</li>
-    <li>Delivery</li>
-    <li>Privacy policy</li>
-  </ul>
+          <ul className='flex flex-col gap-1 text-gray-600'>
+            <li>Home</li>
+            <li>About us</li>
+            <li>Delivery</li>
+            <li>Privacy policy</li>
+          </ul>
 
-</div>
+        </div>
 
-<div>
+        <div>
 
-  <p className='text-xl font-medium mb-5'>
-    GET IN TOUCH
-  </p>
+          <p className='text-xl font-medium mb-5'>
+            GET IN TOUCH
+          </p>
 
-  <ul className='flex flex-col gap-1 text-gray-600'>
-    <li>+1-212-456-7890</li>
-    <li>contact@foreveryou.com</li>
-  </ul>
+          <ul className='flex flex-col gap-1 text-gray-600'>
+            <li>+1-212-456-7890</li>
+            <li>contact@foreveryou.com</li>
+          </ul>
 
-</div>
+        </div>
 
       </div>
       <div>
-  <hr className='border-gray-200' />
+        <hr className='border-gray-200' />
 
-  <p className='py-5 text-sm text-center'>
-    Copyright 2026@ forever.com - All Right Reserved.
-  </p>
-</div>
+        <p className='py-5 text-sm text-center'>
+          Copyright 2026@ forever.com - All Right Reserved.
+        </p>
+      </div>
 
     </div>
   )

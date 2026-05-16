@@ -12,7 +12,7 @@ const BestSeller = () => {
 
     const bestProduct = products.filter((item) => (item.bestseller));
 
-    setBestSeller(bestProduct.slice(0,5))
+    setBestSeller(bestProduct.slice(0, 5))
 
   }, [products])
 
@@ -24,7 +24,7 @@ const BestSeller = () => {
         <Title text1={'BEST'} text2={'SELLERS'} />
 
         <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Explore our best-selling fashion products loved by thousands of customers for their comfort, style, and premium quality.
         </p>
 
       </div>

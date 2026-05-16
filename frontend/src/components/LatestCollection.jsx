@@ -10,7 +10,7 @@ const LatestCollection = () => {
 
   useEffect(() => {
 
-    setLatestProducts(products.slice().reverse().slice(0,10));
+    setLatestProducts(products.slice().reverse().slice(0, 10));
 
   }, [products])
 
@@ -22,7 +22,7 @@ const LatestCollection = () => {
         <Title text1={'LATEST '} text2={'COLLECTIONS'} />
 
         <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Discover the newest arrivals crafted with modern designs, premium fabrics, and everyday comfort for every occasion.
         </p>
 
       </div>
@@ -32,7 +32,7 @@ const LatestCollection = () => {
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
 
         {
-          latestProducts.map((item,index) => (
+          latestProducts.map((item, index) => (
 
             <ProductItem
               key={index}

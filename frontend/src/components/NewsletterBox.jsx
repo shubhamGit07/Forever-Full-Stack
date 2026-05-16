@@ -2,9 +2,9 @@ import React from 'react'
 
 const NewsletterBox = () => {
 
-    const onSubmitHandler =(event) => {
-        event.preventDefault();
-    }
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+  }
   return (
     <div className='text-center mt-10'>
 
@@ -13,11 +13,11 @@ const NewsletterBox = () => {
       </p>
 
       <p className='text-gray-400 mt-3'>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Subscribe to our newsletter and get updates on the latest collections, fashion trends, and exclusive offers.
       </p>
 
       <form className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border border-gray-300 pl-3'>
-        
+
         <input
           className='w-full sm:flex-1 outline-none'
           type="email"
