@@ -6,6 +6,7 @@ import { ShopContext } from '../context/ShopContext'
 const Navbar = () => {
 
   const [visible, setVisible] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
   const {
     setShowSearch,
@@ -139,9 +140,9 @@ const Navbar = () => {
             onClick={() => {
 
               if (!token) {
-
                 navigate('/login')
-
+              } else {
+                setProfileOpen(!profileOpen)
               }
 
             }}
@@ -158,12 +159,12 @@ const Navbar = () => {
 
             token && (
 
-              <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-10'>
+              <div className={`${profileOpen ? 'block' : 'hidden'} absolute dropdown-menu right-0 pt-4 z-10`}>
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
                   <p className='text-black font-semibold'>
-                    {`Welcome ${userData?.name || "User"}`}
+                    Hi, {userData?.name || "User"}
                   </p>
 
                   <p className='text-xs text-gray-400'>
