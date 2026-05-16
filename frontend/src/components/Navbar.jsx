@@ -6,7 +6,6 @@ import { ShopContext } from '../context/ShopContext'
 const Navbar = () => {
 
   const [visible, setVisible] = useState(false)
-  const [profileOpen, setProfileOpen] = useState(false)
 
   const {
     setShowSearch,
@@ -14,8 +13,7 @@ const Navbar = () => {
     navigate,
     token,
     setToken,
-    setCartItems,
-    userData
+    setCartItems
   } = useContext(ShopContext)
 
   // ======================================================
@@ -30,8 +28,6 @@ const Navbar = () => {
 
     setCartItems({})
 
-    setProfileOpen(false)
-
     navigate('/login')
 
   }
@@ -40,7 +36,9 @@ const Navbar = () => {
 
     <div className='flex items-center justify-between py-5 font-medium border-b border-gray-200'>
 
-      {/* LOGO */}
+      {/* ======================================================
+          LOGO
+      ====================================================== */}
 
       <Link to='/'>
 
@@ -52,7 +50,9 @@ const Navbar = () => {
 
       </Link>
 
-      {/* DESKTOP MENU */}
+      {/* ======================================================
+          DESKTOP MENU
+      ====================================================== */}
 
       <ul className='hidden sm:flex gap-6 text-sm text-gray-700 items-center'>
 
@@ -61,6 +61,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>HOME</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -68,6 +69,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>COLLECTION</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -75,6 +77,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>ABOUT</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -82,22 +85,27 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>CONTACT</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
-        {/* ADMIN PANEL */}
+        {/* ADMIN PANEL BUTTON */}
+
+        {/* ADMIN PANEL BUTTON */}
 
         <a
           href='https://forever-admin-five-orpin.vercel.app'
           target='_blank'
           rel='noreferrer'
-          className='px-5 py-2 rounded-full border border-gray-200 text-sm text-gray-700 hover:text-black hover:border-gray-300 transition-all duration-300'
+          className='px-5 py-2 rounded-full border border-gray-200 text-sm text-gray-700 hover:text-black hover:border-gray-300 transition-all duration-300 outline-none focus:outline-none focus:ring-0'
         >
           Admin Panel
         </a>
 
       </ul>
 
-      {/* RIGHT SECTION */}
+      {/* ======================================================
+          RIGHT SECTION
+      ====================================================== */}
 
       <div className='flex items-center gap-6'>
 
@@ -123,7 +131,7 @@ const Navbar = () => {
 
         {/* PROFILE */}
 
-        <div className='relative'>
+        <div className='group relative'>
 
           <img
 
@@ -132,10 +140,6 @@ const Navbar = () => {
               if (!token) {
 
                 navigate('/login')
-
-              } else {
-
-                setProfileOpen((prev) => !prev)
 
               }
 
@@ -153,31 +157,19 @@ const Navbar = () => {
 
             token && (
 
-              <div
-                className={`${profileOpen ? 'block' : 'hidden'} absolute right-0 pt-4 z-20`}
-              >
+              <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-10'>
 
-                <div className='flex flex-col gap-2 w-40 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
+                <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
-                  <p className='text-black font-semibold break-words'>
-                    Hi, {userData?.name ? userData.name : 'User'}
+                  <p className='cursor-pointer hover:text-black transition'>
+
+                    My Profile
+
                   </p>
-
-                  <p className='text-xs text-gray-400'>
-                    Signed In
-                  </p>
-
-                  <hr />
 
                   <p
 
-                    onClick={() => {
-
-                      navigate('/orders')
-
-                      setProfileOpen(false)
-
-                    }}
+                    onClick={() => navigate('/orders')}
 
                     className='cursor-pointer hover:text-black transition'
 
@@ -191,7 +183,7 @@ const Navbar = () => {
 
                     onClick={logout}
 
-                    className='cursor-pointer hover:text-red-500 transition'
+                    className='cursor-pointer hover:text-black transition'
 
                   >
 
@@ -246,10 +238,12 @@ const Navbar = () => {
 
       </div>
 
-      {/* MOBILE SIDEBAR */}
+      {/* ======================================================
+          MOBILE SIDEBAR
+      ====================================================== */}
 
       <div
-        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-30`}
+        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-20`}
       >
 
         <div className='flex flex-col text-gray-600'>
@@ -273,28 +267,6 @@ const Navbar = () => {
             <p>Back</p>
 
           </div>
-
-          {/* MOBILE USER INFO */}
-
-          {
-
-            token && (
-
-              <div className='py-3 pl-6 border-b border-gray-100 bg-gray-50'>
-
-                <p className='text-black font-semibold'>
-                  Hi, {userData?.name ? userData.name : 'User'}
-                </p>
-
-                <p className='text-xs text-gray-400 mt-1'>
-                  Signed In
-                </p>
-
-              </div>
-
-            )
-
-          }
 
           {/* MOBILE LINKS */}
 
@@ -354,11 +326,11 @@ const Navbar = () => {
 
           </NavLink>
 
-          {/* ADMIN PANEL */}
+          {/* MOBILE ADMIN PANEL */}
 
           <a
 
-            href='https://forever-admin-five-orpin.vercel.app'
+           href='https://forever-admin-five-orpin.vercel.app'
 
             target='_blank'
 
@@ -371,8 +343,6 @@ const Navbar = () => {
             ADMIN PANEL
 
           </a>
-
-          {/* ORDERS */}
 
           {
 
@@ -391,34 +361,6 @@ const Navbar = () => {
                 ORDERS
 
               </NavLink>
-
-            )
-
-          }
-
-          {/* LOGOUT */}
-
-          {
-
-            token && (
-
-              <p
-
-                onClick={() => {
-
-                  logout()
-
-                  setVisible(false)
-
-                }}
-
-                className='py-2 pl-6 border-b border-gray-100 cursor-pointer text-red-500'
-
-              >
-
-                LOGOUT
-
-              </p>
 
             )
 
