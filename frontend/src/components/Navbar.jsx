@@ -161,34 +161,28 @@ const Navbar = () => {
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
-                  <p className='cursor-pointer hover:text-black transition'>
-
-                    My Profile
-
+                  <p className='text-black font-semibold'>
+                    Welcome User
                   </p>
 
-                  <p
+                  <p className='text-xs text-gray-400'>
+                    Signed In
+                  </p>
 
+                  <hr />
+
+                  <p
                     onClick={() => navigate('/orders')}
-
                     className='cursor-pointer hover:text-black transition'
-
                   >
-
                     Orders
-
                   </p>
 
                   <p
-
                     onClick={logout}
-
-                    className='cursor-pointer hover:text-black transition'
-
+                    className='cursor-pointer hover:text-red-500 transition'
                   >
-
                     Logout
-
                   </p>
 
                 </div>
@@ -330,7 +324,7 @@ const Navbar = () => {
 
           <a
 
-           href='https://forever-admin-five-orpin.vercel.app'
+            href='https://forever-admin-five-orpin.vercel.app'
 
             target='_blank'
 
