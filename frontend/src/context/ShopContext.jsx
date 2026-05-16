@@ -43,6 +43,9 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] =
         useState({});
 
+    const [userData, setUserData] =
+        useState(null);
+
     // =====================================================
     // FETCH PRODUCTS
     // =====================================================
@@ -473,7 +476,10 @@ const ShopContextProvider = (props) => {
         backendUrl,
 
         token,
-        setToken
+        setToken,
+
+        userData,
+        setUserData
 
     }
 
