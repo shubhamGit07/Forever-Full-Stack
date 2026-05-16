@@ -13,7 +13,8 @@ const Navbar = () => {
     navigate,
     token,
     setToken,
-    setCartItems
+    setCartItems,
+    userData
   } = useContext(ShopContext)
 
   // ======================================================
@@ -162,7 +163,7 @@ const Navbar = () => {
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
                   <p className='text-black font-semibold'>
-                    Welcome User
+                    {`Welcome ${userData?.name || "User"}`}
                   </p>
 
                   <p className='text-xs text-gray-400'>
