@@ -1,4 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useEffect
+} from 'react'
+
 import { assets } from '../assets/assets'
 import { NavLink, Link } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
@@ -6,6 +12,10 @@ import { ShopContext } from '../context/ShopContext'
 const Navbar = () => {
 
   const [visible, setVisible] = useState(false)
+
+  const [showDropdown, setShowDropdown] = useState(false)
+
+  const dropdownRef = useRef()
 
   const {
     setShowSearch,
@@ -15,6 +25,31 @@ const Navbar = () => {
     setToken,
     setCartItems
   } = useContext(ShopContext)
+
+  // ======================================================
+  // CLOSE DROPDOWN ON OUTSIDE CLICK
+  // ======================================================
+
+  useEffect(() => {
+
+    const handleClickOutside = (event) => {
+
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setShowDropdown(false)
+      }
+
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+
+  }, [])
 
   // ======================================================
   // LOGOUT
@@ -127,9 +162,14 @@ const Navbar = () => {
 
         />
 
-        {/* PROFILE */}
+        {/* ======================================================
+            PROFILE
+        ====================================================== */}
 
-        <div className='group relative'>
+        <div
+          className='relative'
+          ref={dropdownRef}
+        >
 
           <img
 
@@ -138,6 +178,10 @@ const Navbar = () => {
               if (!token) {
 
                 navigate('/login')
+
+              } else {
+
+                setShowDropdown(!showDropdown)
 
               }
 
@@ -153,9 +197,9 @@ const Navbar = () => {
 
           {
 
-            token && (
+            token && showDropdown && (
 
-              <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-10'>
+              <div className='absolute right-0 pt-4 z-50'>
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
@@ -167,7 +211,13 @@ const Navbar = () => {
 
                   <p
 
-                    onClick={() => navigate('/orders')}
+                    onClick={() => {
+
+                      navigate('/orders')
+
+                      setShowDropdown(false)
+
+                    }}
 
                     className='cursor-pointer hover:text-black transition'
 
@@ -199,7 +249,9 @@ const Navbar = () => {
 
         </div>
 
-        {/* CART */}
+        {/* ======================================================
+            CART
+        ====================================================== */}
 
         <Link
           to='/cart'
@@ -220,7 +272,9 @@ const Navbar = () => {
 
         </Link>
 
-        {/* MOBILE MENU */}
+        {/* ======================================================
+            MOBILE MENU
+        ====================================================== */}
 
         <img
 
