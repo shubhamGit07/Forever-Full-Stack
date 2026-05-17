@@ -27,6 +27,7 @@ const Navbar = () => {
     localStorage.removeItem('userName')
 
     setToken('')
+
     setCartItems({})
 
     setShowProfileMenu(false)
@@ -162,9 +163,7 @@ const Navbar = () => {
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
-                  <p
-                    className='cursor-default text-black font-medium border-b border-gray-200 pb-2'
-                  >
+                  <p className='cursor-default text-black font-medium border-b border-gray-200 pb-2'>
 
                     Welcome Back
 
@@ -252,7 +251,7 @@ const Navbar = () => {
       ====================================================== */}
 
       <div
-        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-40`}
+        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all duration-300 z-40`}
       >
 
         <div className='flex flex-col text-gray-600'>
