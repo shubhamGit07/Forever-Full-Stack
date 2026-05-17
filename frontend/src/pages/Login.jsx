@@ -96,7 +96,10 @@ const Login = () => {
 
         const userName = response.data.user?.name || name
 
-        localStorage.setItem('userName', userName)
+        localStorage.setItem(
+          'userData',
+          JSON.stringify(response.data.user)
+        )
 
         setToken(newToken)
 
