@@ -94,6 +94,10 @@ const Login = () => {
 
         const newToken = response.data.token
 
+        const userName = response.data.user?.name || name
+
+        localStorage.setItem('userName', userName)
+
         setToken(newToken)
 
         localStorage.setItem('token', newToken)

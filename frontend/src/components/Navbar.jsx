@@ -4,6 +4,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
+  const userName = localStorage.getItem('userName')
 
   const [visible, setVisible] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)
@@ -24,6 +25,8 @@ const Navbar = () => {
   const logout = () => {
 
     localStorage.removeItem('token')
+
+    localStorage.removeItem('userName')
 
     setToken('')
 
@@ -162,21 +165,21 @@ const Navbar = () => {
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
-                  <p
+                  <div className='border-b border-gray-200 pb-2'>
 
-                    onClick={() => {
+                    <p className='text-black font-medium'>
 
-                      setShowProfileMenu(false)
+                      Hi, {userName || 'User'}
 
-                    }}
+                    </p>
 
-                    className='cursor-pointer hover:text-black transition'
+                    <p className='text-xs text-gray-500 mt-1'>
 
-                  >
+                      Welcome Back
 
-                    My Profile
+                    </p>
 
-                  </p>
+                  </div>
 
                   <p
 
