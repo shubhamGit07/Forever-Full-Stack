@@ -4,9 +4,11 @@ import { NavLink, Link } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
-  const fullName =
-    JSON.parse(localStorage.getItem('userData'))?.name ||
-    localStorage.getItem('userName')
+  const storedUser = localStorage.getItem('userData')
+
+  const fullName = storedUser
+    ? JSON.parse(storedUser).name
+    : localStorage.getItem('userName')
 
   const userName = fullName?.split(' ')[0]
 
