@@ -4,16 +4,8 @@ import { NavLink, Link } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
-  const storedUser = localStorage.getItem('userData')
-
-  const fullName = storedUser
-    ? JSON.parse(storedUser).name
-    : localStorage.getItem('userName')
-
-  const userName = fullName?.split(' ')[0]
 
   const [visible, setVisible] = useState(false)
-  const [showProfileMenu, setShowProfileMenu] = useState(false)
 
   const {
     setShowSearch,
@@ -32,15 +24,9 @@ const Navbar = () => {
 
     localStorage.removeItem('token')
 
-    localStorage.removeItem('userName')
-
-    localStorage.removeItem('userData')
-
     setToken('')
 
     setCartItems({})
-
-    setShowProfileMenu(false)
 
     navigate('/login')
 
@@ -48,7 +34,7 @@ const Navbar = () => {
 
   return (
 
-    <div className='flex items-center justify-between py-5 font-medium border-b border-gray-200 relative'>
+    <div className='flex items-center justify-between py-5 font-medium border-b border-gray-200'>
 
       {/* ======================================================
           LOGO
@@ -75,6 +61,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>HOME</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -82,6 +69,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>COLLECTION</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -89,6 +77,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>ABOUT</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -96,6 +85,7 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>CONTACT</p>
+          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         {/* ADMIN PANEL BUTTON */}
@@ -139,7 +129,7 @@ const Navbar = () => {
 
         {/* PROFILE */}
 
-        <div className='relative'>
+        <div className='group relative'>
 
           <img
 
@@ -148,10 +138,6 @@ const Navbar = () => {
               if (!token) {
 
                 navigate('/login')
-
-              } else {
-
-                setShowProfileMenu(!showProfileMenu)
 
               }
 
@@ -167,37 +153,21 @@ const Navbar = () => {
 
           {
 
-            token && showProfileMenu && (
+            token && (
 
-              <div className='absolute right-0 pt-4 z-50'>
+              <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-10'>
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
-                  <div className='border-b border-gray-200 pb-2'>
+                  <p className='cursor-pointer hover:text-black transition'>
 
-                    <p className='text-black font-medium'>
+                    My Profile
 
-                      Hi, {userName || 'User'}
-
-                    </p>
-
-                    <p className='text-xs text-gray-500 mt-1'>
-
-                      Welcome Back
-
-                    </p>
-
-                  </div>
+                  </p>
 
                   <p
 
-                    onClick={() => {
-
-                      navigate('/orders')
-
-                      setShowProfileMenu(false)
-
-                    }}
+                    onClick={() => navigate('/orders')}
 
                     className='cursor-pointer hover:text-black transition'
 
@@ -271,7 +241,7 @@ const Navbar = () => {
       ====================================================== */}
 
       <div
-        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-40`}
+        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-20`}
       >
 
         <div className='flex flex-col text-gray-600'>
@@ -376,41 +346,19 @@ const Navbar = () => {
 
             token && (
 
-              <>
+              <NavLink
 
-                <NavLink
+                onClick={() => setVisible(false)}
 
-                  onClick={() => setVisible(false)}
+                className='py-2 pl-6 border-b border-gray-100'
 
-                  className='py-2 pl-6 border-b border-gray-100'
+                to='/orders'
 
-                  to='/orders'
+              >
 
-                >
+                ORDERS
 
-                  ORDERS
-
-                </NavLink>
-
-                <p
-
-                  onClick={() => {
-
-                    logout()
-
-                    setVisible(false)
-
-                  }}
-
-                  className='py-2 pl-6 border-b border-gray-100 cursor-pointer'
-
-                >
-
-                  LOGOUT
-
-                </p>
-
-              </>
+              </NavLink>
 
             )
 
