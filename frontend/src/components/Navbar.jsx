@@ -24,9 +24,9 @@ const Navbar = () => {
   const logout = () => {
 
     localStorage.removeItem('token')
+    localStorage.removeItem('userName')
 
     setToken('')
-
     setCartItems({})
 
     setShowProfileMenu(false)
@@ -163,18 +163,10 @@ const Navbar = () => {
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
                   <p
-
-                    onClick={() => {
-
-                      setShowProfileMenu(false)
-
-                    }}
-
-                    className='cursor-pointer hover:text-black transition'
-
+                    className='cursor-default text-black font-medium border-b border-gray-200 pb-2'
                   >
 
-                    My Profile
+                    Welcome Back
 
                   </p>
 
