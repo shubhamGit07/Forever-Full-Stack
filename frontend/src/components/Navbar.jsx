@@ -6,6 +6,7 @@ import { ShopContext } from '../context/ShopContext'
 const Navbar = () => {
 
   const [visible, setVisible] = useState(false)
+  const [showProfileMenu, setShowProfileMenu] = useState(false)
 
   const {
     setShowSearch,
@@ -28,13 +29,15 @@ const Navbar = () => {
 
     setCartItems({})
 
+    setShowProfileMenu(false)
+
     navigate('/login')
 
   }
 
   return (
 
-    <div className='flex items-center justify-between py-5 font-medium border-b border-gray-200'>
+    <div className='flex items-center justify-between py-5 font-medium border-b border-gray-200 relative'>
 
       {/* ======================================================
           LOGO
@@ -61,7 +64,6 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>HOME</p>
-          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -69,7 +71,6 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>COLLECTION</p>
-          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -77,7 +78,6 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>ABOUT</p>
-          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         <NavLink
@@ -85,7 +85,6 @@ const Navbar = () => {
           className='flex flex-col items-center gap-1 hover:text-black transition'
         >
           <p>CONTACT</p>
-          <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
 
         {/* ADMIN PANEL BUTTON */}
@@ -129,7 +128,7 @@ const Navbar = () => {
 
         {/* PROFILE */}
 
-        <div className='group relative'>
+        <div className='relative'>
 
           <img
 
@@ -138,6 +137,10 @@ const Navbar = () => {
               if (!token) {
 
                 navigate('/login')
+
+              } else {
+
+                setShowProfileMenu(!showProfileMenu)
 
               }
 
@@ -153,13 +156,23 @@ const Navbar = () => {
 
           {
 
-            token && (
+            token && showProfileMenu && (
 
-              <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-10'>
+              <div className='absolute right-0 pt-4 z-50'>
 
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded shadow-lg border border-gray-100'>
 
-                  <p className='cursor-pointer hover:text-black transition'>
+                  <p
+
+                    onClick={() => {
+
+                      setShowProfileMenu(false)
+
+                    }}
+
+                    className='cursor-pointer hover:text-black transition'
+
+                  >
 
                     My Profile
 
@@ -167,7 +180,13 @@ const Navbar = () => {
 
                   <p
 
-                    onClick={() => navigate('/orders')}
+                    onClick={() => {
+
+                      navigate('/orders')
+
+                      setShowProfileMenu(false)
+
+                    }}
 
                     className='cursor-pointer hover:text-black transition'
 
@@ -241,7 +260,7 @@ const Navbar = () => {
       ====================================================== */}
 
       <div
-        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-20`}
+        className={`${visible ? 'w-full' : 'w-0'} absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-40`}
       >
 
         <div className='flex flex-col text-gray-600'>
@@ -346,19 +365,41 @@ const Navbar = () => {
 
             token && (
 
-              <NavLink
+              <>
 
-                onClick={() => setVisible(false)}
+                <NavLink
 
-                className='py-2 pl-6 border-b border-gray-100'
+                  onClick={() => setVisible(false)}
 
-                to='/orders'
+                  className='py-2 pl-6 border-b border-gray-100'
 
-              >
+                  to='/orders'
 
-                ORDERS
+                >
 
-              </NavLink>
+                  ORDERS
+
+                </NavLink>
+
+                <p
+
+                  onClick={() => {
+
+                    logout()
+
+                    setVisible(false)
+
+                  }}
+
+                  className='py-2 pl-6 border-b border-gray-100 cursor-pointer'
+
+                >
+
+                  LOGOUT
+
+                </p>
+
+              </>
 
             )
 
