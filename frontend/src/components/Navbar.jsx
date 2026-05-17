@@ -4,7 +4,9 @@ import { NavLink, Link } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
-  const userName = localStorage.getItem('userName')
+  const fullName = localStorage.getItem('userName')
+
+  const userName = fullName?.split(' ')[0]
 
   const [visible, setVisible] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)
